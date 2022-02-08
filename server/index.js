@@ -9,8 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/", (req, res) => {
-  // const store = req.query.query;
-  const store = "가미우동";
+  const store = req.query.query;
   axios
     .get("https://openapi.naver.com/v1/search/local.json", {
       headers: {
