@@ -1,12 +1,19 @@
 {
   "name": "gogofoodie",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "cd server && nodemon",
-    "start": "cd server && node index.js"
+    "start": "cd server && node index.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
