@@ -3,8 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import { useTodoDispatch, useTodoNextId } from "../TodoContext";
 import useAsync from "../useAsync";
-axios.defaults.baseURL =
-  process.env.NODE_ENV === "development" ? "/" : "https://openapi.naver.com";
 
 const MessageWrap = styled.div`
   position: absolute;
