@@ -1,6 +1,24 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { MdAdd } from "react-icons/md";
+
+const fadeIn = keyframes`
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+`;
+
+const fadeOut = keyframes`
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+`;
 
 const CircleButton = styled.div`
   background: #38d9a9;
@@ -47,6 +65,17 @@ const InsertFormPositioner = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
+
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
+
+  ${(props) =>
+    props.disappear &&
+    css`
+      animation-name: ${fadeOut};
+    `};
 `;
 
 const InsertForm = styled.form`
@@ -82,18 +111,16 @@ function CreateForm({ onNewStore = (f) => f }) {
 
   return (
     <>
-      {open && (
-        <InsertFormPositioner>
-          <InsertForm onSubmit={onSubmit}>
-            <Input
-              placeholder="가게명을 입력 후, Enter 버튼을 누르세요."
-              autoFocus
-              onChange={onChange}
-              value={value}
-            />
-          </InsertForm>
-        </InsertFormPositioner>
-      )}
+      <InsertFormPositioner disappear={!open}>
+        <InsertForm onSubmit={onSubmit}>
+          <Input
+            placeholder="가게명을 입력 후, Enter 버튼을 누르세요."
+            autoFocus
+            onChange={onChange}
+            value={value}
+          />
+        </InsertForm>
+      </InsertFormPositioner>
       <CircleButton onClick={onToggle} open={open}>
         <MdAdd />
       </CircleButton>
