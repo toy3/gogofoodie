@@ -65,6 +65,7 @@ const InsertFormPositioner = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
+  pointer-events: unset;
 
   animation-duration: 0.25s;
   animation-timing-function: ease-out;
@@ -74,6 +75,7 @@ const InsertFormPositioner = styled.div`
   ${(props) =>
     props.disappear &&
     css`
+      pointer-events: none;
       animation-name: ${fadeOut};
     `};
 `;

@@ -32,8 +32,7 @@ export default function GetAddress({ store }) {
     return response.data.items[0].address;
   }
 
-  // eslint-disable-next-line
-  const [state, refetch] = useAsync(getAddress, [store], skip);
+  const [state] = useAsync(getAddress, [store], skip);
   const { loading, data: address, error } = state;
 
   useLayoutEffect(() => {
