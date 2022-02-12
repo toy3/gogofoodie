@@ -12,6 +12,11 @@ const TodoTemplateWrap = styled.div`
   margin: 86px 28vw 40px;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 1280px) {
+    width: calc(100% - 12vw);
+    margin: 60px auto 70px;
+  }
 `;
 
 export default function TodoTemplate({ children }) {
